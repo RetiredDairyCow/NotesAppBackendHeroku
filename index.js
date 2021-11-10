@@ -80,10 +80,11 @@ app.post('/api/notes', (request, response) => {
     })
   }
   const  note = { 
+    id: Math.floor(Math.random() * 100),
     content: body.content,
-    important: body.important || false,
     date: new Date(),
-    id: generateId()
+    important: body.important || false
+     /* generateId() */
   }
    
     notes = notes.concat(note)
