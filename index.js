@@ -5,6 +5,7 @@ app.use(express.json()) /*JSON parser for POST req*/
 
 const cors = require('cors')
 app.use(cors())
+app.use(express.static('build'))
 
 
 const requestLogger = (request, response, next) => {
