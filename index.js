@@ -20,7 +20,7 @@ app.use(requestLogger)
 let notes = [
     {
       id: 1,
-      content: "Your cheeks (front and back)",
+      content: "Your tiny hands",
       date: "2019-05-30T17:30:31.098Z",
       important: true
     },
@@ -32,7 +32,7 @@ let notes = [
     },
     {
       id: 3,
-      content: "Your butt",
+      content: "Your perfect skin (i'm not jealous at all)",
       date: "2019-05-30T19:20:14.298Z",
       important: true
     }
