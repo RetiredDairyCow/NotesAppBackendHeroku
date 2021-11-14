@@ -1,4 +1,18 @@
 const express = require('express')
+const mongoose = require('mongoose')
+
+const url =
+`mongodb+srv://shugu:${password}@mymongodb.z3yzd.mongodb.net/note-appDB?retryWrites=true&w=majority`
+
+mongoose.connect(url)
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  date: Date,
+  important: Boolean,
+})
+
+const Note = mongoose.model('Note', noteSchema)
 
 const app = express()
 app.use(express.json()) /*JSON parser for POST req*/
@@ -38,12 +52,16 @@ let notes = [
     }
   ]
 
+
+
 app.get('/', (request, response) => {
     response.send('<h1>Hello World!</h1>')
 })
 
 app.get('/api/notes', (request, response) => {
+  Note.find({}).then(notes => {
     response.json(notes)
+    })  
 })
 
 app.get('/api/notes/:id', (request, response) => {
