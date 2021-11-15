@@ -17,3 +17,6 @@ Content-type: application/json
     "content" : "TEST MATH ",
     "important" : false
 }
+
+###Send a get request with id that doesn't exist
+GET http://localhost:3001/api/notes/5c41c90e84d891c15dfa3431

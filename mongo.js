@@ -5,41 +5,35 @@ if (process.argv.length < 3) {
   process.exit(1)
 }
 
+const password = process.argv[2]
 
-else {
-    const password = process.argv[2]
+const url =
+  `mongodb+srv://shugu:${password}@mymongodb.z3yzd.mongodb.net/note-app?retryWrites=true&w=majoritymongoose.connect(url)`
 
-    const url =
-    `mongodb+srv://shugu:${password}@mymongodb.z3yzd.mongodb.net/phonebookappDB?retryWrites=true&w=majority`
+mongoose.connect(url)
 
-    mongoose.connect(url)
+const noteSchema = new mongoose.Schema({
+  content: String,
+  date: Date,
+  important: Boolean,
+})
 
-    const phonebookSchema = new mongoose.Schema({
-    name: String,
-    number: Number,
+const Note = mongoose.model('Note', noteSchema)
+
+const note = new Note({
+  content: 'Callback-functions suck',
+  date: new Date(),
+  important: true,
+})
+
+note.save().then(result => {
+  console.log('note saved!')
+  mongoose.connection.close()
+})
+/* 
+Note.find({}).then(result => {
+    result.forEach(note => {
+      console.log(note)
     })
-
-    const Person = mongoose.model('Person', phonebookSchema)
-
-    const person = new Person({
-    name: process.argv[3],
-    number: process.argv[4]
-    })
-
-    if(process.argv.length === 3){
-        console.log("Phonebook:")
-        Person.find({}).then(result => {  
-            result.forEach(e => {
-              console.log(e)
-            })
-            mongoose.connection.close()
-      })
-    }
-
-    else{
-        person.save().then(result => {
-            console.log('entry saved!' , result)
-            mongoose.connection.close()
-        })
-    }
-}
+    mongoose.connection.close()
+  }) */
