@@ -14,9 +14,21 @@ POST http://localhost:3001/api/notes
 Content-type: application/json
 
 {
-    "content" : "TEST MATH ",
+    "content" : "min",
     "important" : false
 }
 
 ###Send a get request with id that doesn't exist
-GET http://localhost:3001/api/notes/5c41c90e84d891c15dfa3431
+GET http://localhost:3001/api/notes/AAAA5c41c90e84d891c15dfa3431
+
+###
+DELETE http://localhost:3001/api/notes/6192cef663861cb1c587ccfb
+
+###
+PUT http://localhost:3001/api/notes/61919ce8d659380546d7c804
+Content-Type: application/json
+
+{
+    "content" : "HTML is Easy",
+    "important" : false
+}

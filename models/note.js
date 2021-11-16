@@ -14,18 +14,17 @@ mongoose.connect(url)
   })
 
 const noteSchema = new mongoose.Schema({
-  content: String,
-  date: Date,
+  content: {
+    type: String,
+    minlength: 5,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true
+  },
   important: Boolean,
 })
-
-/* const schema = new mongoose.Schema({ name: String }, {
-  writeConcern: {
-    w: 'majority',
-    j: true,
-    wtimeout: 1000
-  }
-}) */
 
 noteSchema.set('toJSON', {
   transform: (document, returnedObject) => {
