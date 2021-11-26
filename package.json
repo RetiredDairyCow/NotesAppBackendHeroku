@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "build:ui": "rm -rf build && cd ../NotesAppFrontEnd/ && npm run build --prod && cp -r build ../NotesAppBackend",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "jest --verbose"
   },
   "author": "ashesh patel",
   "license": "MIT",
@@ -22,9 +22,16 @@
     "mongoose": "^6.0.12"
   },
   "devDependencies": {
-    "eslint": "^8.2.0",
-    "eslint-config-google": "^0.14.0",
+    "eslint": "^7.19.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
     "eslint-plugin-react": "^7.27.1",
+    "jest": "^27.3.1",
     "nodemon": "^2.0.14"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

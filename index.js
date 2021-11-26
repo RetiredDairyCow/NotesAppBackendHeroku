@@ -1,14 +1,26 @@
-const express = require('express')
+const app = require('./app')
+const http = require('http')
+const config = require('./utils/config')
+const logger = require('./utils/logger')
+
+const server = http.createServer(app)
+
+server.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`)
+})
+
+
+
+/* const express = require('express')
+const app = express()
 const cors = require('cors')
-/* const mongoose = require('mongoose') */
 
 const Note = require('./models/note')
-const app = express()
-app.use(express.json()) /*JSON parser for POST req*/
+app.use(express.json()) /*JSON parser for POST req
 app.use(express.static('build'))
 app.use(cors())
 
-/*my custom middleware*/
+
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method)
   console.log('Path:  ', request.path)
@@ -40,7 +52,7 @@ app.get('/api/notes/:id', (request, response, next) => {
     })
     .catch(error => {
       next(error)
-      /*  console.log(error)  */
+      console.log(error)
     })
 })
 
@@ -54,7 +66,7 @@ app.delete('/api/notes/:id', (request, response, next) => {
         response.status(404).end()
       }
     })
-    .catch(error => next(error)) /*for any unexpected error*/
+    .catch(error => next(error)) /*for any unexpected error
 })
 
 app.post('/api/notes', (request, response, next) => {
@@ -108,7 +120,7 @@ const errorHandler = (error, request, response, next) => {
     return response.status(400).json({ error: error.message })
   }
   next(error) /*if not a cast error, the middleware passes the error to the default
-  express error handler*/
+  express error handler
 }
 app.use(errorHandler)
 
@@ -118,3 +130,4 @@ const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
+ */
