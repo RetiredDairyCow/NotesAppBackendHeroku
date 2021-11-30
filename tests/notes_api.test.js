@@ -79,15 +79,33 @@ test.only('a specific note can be viewed', async () => {
   const notesAtStart = await helper.notesInDb()
 
   const noteToView = notesAtStart[0]
-  /* console.log(noteToView) */
+  
   const resultNote = await api
     .get(`/api/notes/${noteToView.id}`)
     .expect(200)
     .expect('Content-Type', /application\/json/)
 
-  /* console.log(resultNote.body) */
+  
   const processNoteToView = JSON.parse(JSON.stringify(noteToView))
   expect(resultNote.body).toEqual(processNoteToView)
+})
+
+test('a note can be deleted', async () => {
+  const notesAtStart = await helper.notesInDb()
+  const noteToDelete = notesAtStart[0]
+  
+
+  await api 
+    .delete(`/api/notes/${noteToDelete.id}`)
+    .expect(204)
+
+  const notesAtEnd = await helper.notesInDb()
+  expect(notesAtEnd).toHaveLength(
+    helper.initialNotes.length - 1
+  )
+
+  const contents = notesAtEnd.map(r => r.content)
+  expect(contents).not.toContain(noteToDelete.content)
 })
 
 afterAll(() => {

@@ -23,7 +23,7 @@ const nonExistingId = async () => {
 
 const notesInDb = async () => {
   const notes = await Note.find({})
-  return notes.map(note => note.toJSON())
+  return notes.map(note => note.toJSON()) /*toJSON() Formats the object from DB _id => id and removes _v property */
 }
 
 module.exports = {

@@ -24,7 +24,8 @@ const noteSchema = new mongoose.Schema({
   important: Boolean,
 })
 /**The 'toJSON' method is modified to format the objects returned
- * by mongoose. 'toJSON()' is a method of the schema
+ * by mongoose. 'toJSON()' is a method of the schema. this 
+ * has to be called on individual objects and not on all objects
  */
 noteSchema.set('toJSON', {
   transform: (document, returnedObject) => {
