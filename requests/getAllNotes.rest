@@ -9,17 +9,17 @@ Content-Type: application/json
     "important" : false
 }
 
-###
+### no content
 POST http://localhost:3001/api/notes
 Content-type: application/json
 
 {
-    "content" : "min",
+    
     "important" : false
 }
 
-###Send a get request with id that doesn't exist
-GET http://localhost:3001/api/notes/AAAA5c41c90e84d891c15dfa3431
+###Send a get request with id that exist
+GET http://localhost:3001/api/notes/61919e47a4c82c24e15ff308
 
 ###
 DELETE http://localhost:3001/api/notes/6192cef663861cb1c587ccfb
