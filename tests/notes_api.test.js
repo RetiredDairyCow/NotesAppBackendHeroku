@@ -75,7 +75,7 @@ test('note without content is not added', async () => {
   expect(notesAtEnd).toHaveLength(helper.initialNotes.length)
 })
 
-test.only('a specific note can be viewed', async () => {
+test('a specific note can be viewed', async () => {
   const notesAtStart = await helper.notesInDb()
 
   const noteToView = notesAtStart[0]
