@@ -6,7 +6,8 @@ Content-Type: application/json
 
 {
     "content" : "VS CODE REST CLIENT",
-    "important" : false
+    "important" : false,
+    "user" : "61aef1fca5acc8322c649847"
 }
 
 ### no content
@@ -19,7 +20,7 @@ Content-type: application/json
 }
 
 ###Send a get request with id that exist
-GET http://localhost:3001/api/notes/61919e47a4c82c24e15ff308
+GET http://localhost:3001/api/notes/61919ce8d659380546d7c804
 
 ###
 DELETE http://localhost:3001/api/notes/6192cef663861cb1c587ccfb
@@ -31,4 +32,18 @@ Content-Type: application/json
 {
     "content" : "HTML is Easy",
     "important" : false
+}
+
+###
+GET http://localhost:3001/api/users
+
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "notes": [],
+    "username": "shugz",
+    "name": "Superuser",
+    "password": "salainen"
 }

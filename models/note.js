@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config()
+/* const dotenv = require('dotenv').config() */
 const mongoose = require('mongoose')
 
 /* const url = process.env.MONGODB_URI */
@@ -22,6 +22,10 @@ const noteSchema = new mongoose.Schema({
     required: true
   },
   important: Boolean,
+  user: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 /**The 'toJSON' method is modified to format the objects returned
  * by mongoose. 'toJSON()' is a method of the schema. this 
