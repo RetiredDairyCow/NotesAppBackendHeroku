@@ -1,3 +1,4 @@
+//To run the Jest test: npm test
 const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
@@ -44,6 +45,8 @@ test('notes are returned as json', async () => {
 
 test('all notes are returned', async () => {
   const response = await api.get('/api/notes')
+  console.log("RESPONSE.BODY below")
+  console.log(response.body)
   expect(response.body).toHaveLength(helper.initialNotes.length)
 })
 
@@ -96,11 +99,11 @@ test('note without content is not added', async () => {
   expect(notesAtEnd).toHaveLength(helper.initialNotes.length)
 })
 
-test('a specific note can be viewed', async () => {
+test.only('a specific note can be viewed', async () => {
   const notesAtStart = await helper.notesInDb()
 
   const noteToView = notesAtStart[0]
-  
+   
   /*note below is in JSON*/
   const resultNote = await api
     .get(`/api/notes/${noteToView.id}`)
@@ -160,7 +163,7 @@ test('Delete succeeds with status code 204 if id is valid', async () => {
 })
 
 
-describe.only('when there is initially one user in db', () => {
+describe('when there is initially one user in db', () => {
   
   beforeEach(async () => {
     await User.deleteMany({})

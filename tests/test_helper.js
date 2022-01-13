@@ -24,6 +24,8 @@ const nonExistingId = async () => {
 
 const notesInDb = async () => {
   const notes = await Note.find({})
+  console.log('Notes in DB')
+  console.log(notes)
   return notes.map(note => note.toJSON()) /*toJSON() Formats the object from DB _id => id and removes _v property */
 }
 

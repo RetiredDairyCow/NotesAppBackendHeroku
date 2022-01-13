@@ -57,17 +57,7 @@ const getTokenFrom = request => {
 }
 
 notesRouter.post('/', async (request, response, next) => {
-  /*Using promises*/
-  /* const note = new Note(request.body)
-
-    note
-    .save()
-    .then((result) => {
-      console.log(result)
-      response.status(201).json(result)
-    })
-}) */
-
+ 
   const body = request.body
   const token = getTokenFrom(request) 
   const decodedToken = jwt.verify(token, `${process.env.SECRET}`)

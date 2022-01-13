@@ -13,6 +13,6 @@ Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzaGVzaCIsImlkIjoiNjFhZmM5OTljYWUyODNmNmNjZGVkMTcwIiwiaWF0IjoxNjM4OTI5MzI0fQ.tLuu2D6kln1BVJrZ4naYK6JX74k2lWELXPhvEuAnBxU
 
 {
-  "content" : "NEW NOTE WITH TOKEN",
+  "content" : "NEW NOTE WITH TOKEN after del nodeJSON file with env",
   "important": true
 }
